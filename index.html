@@ -1,0 +1,598 @@
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GEN-PRO</title>
+<style>
+/* ============================================================== */
+/* ESTILOS - VERSIÓN COMPLETA CON LIVE MEJORADO                 */
+/* ============================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+:root {
+--bg-principal: #0a1628;
+--bg-tarjeta: #0f1f3a;
+--bg-inputs: #1a2a4a;
+--texto-principal: #e8f0ff;
+--texto-secundario: #8ab4ff;
+--borde-neon: #00ccff;
+--grad-fondo: radial-gradient(ellipse at 50% 30%, #0a1a3a, #050d1a);
+--border-radius: 10px;
+--bg-auth: rgba(15, 31, 58, 0.95);
+--bg-panel: rgba(10, 22, 40, 0.92);
+--bg-card: rgba(15, 31, 58, 0.85);
+--bg-result: rgba(0, 0, 0, 0.3);
+--text-muted: #6a8aaa;
+--sombra: 0 0 30px rgba(0, 180, 255, 0.1);
+--border-color: #1a4a7a;
+--input-bg: #1a2a4a;
+--mention-color: #00ff88;
+--card-bg: rgba(15, 31, 58, 0.7);
+--hover-bg: rgba(0, 100, 200, 0.15);
+--text-bright: #ffffff;
+--admin-btn-bg: #1a2a4a;
+--admin-btn-hover: #2a4a6a;
+--solicitud-pendiente: #ffaa44;
+--solicitud-aprobada: #00ff88;
+--solicitud-rechazada: #ff4444;
+}
+body.theme-day {
+--bg-principal: #e8f0fe;
+--bg-tarjeta: #d4e4f7;
+--bg-inputs: #ffffff;
+--texto-principal: #0a1a3a;
+--texto-secundario: #1a4a7a;
+--borde-neon: #0088cc;
+--grad-fondo: radial-gradient(ellipse at 50% 30%, #d4e4f7, #b8cce6);
+--bg-auth: rgba(200, 220, 245, 0.95);
+--bg-panel: rgba(200, 220, 245, 0.92);
+--bg-card: rgba(200, 220, 245, 0.85);
+--bg-result: rgba(0, 0, 0, 0.05);
+--text-muted: #4a6a8a;
+--sombra: 0 0 30px rgba(0, 100, 200, 0.1);
+--border-color: #88bbdd;
+--input-bg: #ffffff;
+--auth-box-shadow: 0 0 30px rgba(0, 100, 200, 0.15);
+--mention-color: #00aa66;
+--card-bg: rgba(200, 220, 245, 0.7);
+--hover-bg: rgba(0, 100, 200, 0.08);
+--text-bright: #0a1a3a;
+--admin-btn-bg: #d4e4f7;
+--admin-btn-hover: #b8cce6;
+--solicitud-pendiente: #cc8800;
+--solicitud-aprobada: #00aa66;
+--solicitud-rechazada: #cc0000;
+}
+html, body {
+width: 100%;
+min-height: 100vh;
+background: var(--grad-fondo);
+color: var(--texto-principal);
+font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+padding: 15px;
+overflow-y: auto;
+transition: background 0.3s, color 0.3s;
+}
+.app-container {
+width: 100%;
+max-width: 920px;
+background: var(--bg-panel);
+backdrop-filter: blur(10px);
+border-radius: 20px;
+border: 1px solid var(--borde-neon);
+box-shadow: var(--sombra);
+display: flex;
+flex-direction: column;
+overflow: hidden;
+min-height: 90vh;
+max-height: 98vh;
+transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* ===== APLICACIÓN PRINCIPAL ===== */
+#main-app {
+display: flex;
+flex-direction: column;
+height: 100%;
+width: 100%;
+}
+/* ===== NAVBAR ===== */
+.navbar {
+background: linear-gradient(90deg, #0a1a3a, #0f2a5a, #0a1a3a);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 8px 18px;
+border-bottom: 2px solid var(--borde-neon);
+flex-shrink: 0;
+min-height: 52px;
+flex-wrap: wrap;
+gap: 4px;
+transition: background 0.3s, border-color 0.3s;
+}
+body.theme-day .navbar {
+background: linear-gradient(90deg, #c0d8ec, #d4e4f7, #c0d8ec);
+}
+.navbar .logo-area {
+display: flex;
+flex-direction: column;
+}
+.navbar .logo-title {
+font-size: 1.2rem;
+font-weight: bold;
+background: linear-gradient(135deg, #66ddff, #0088cc);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.navbar .logo-title::before {
+content: "⚡ ";
+}
+.navbar .user-info {
+font-size: 0.6rem;
+color: var(--texto-secundario);
+margin-top: -2px;
+}
+.navbar .user-status {
+font-size: 0.55rem;
+padding: 1px 8px;
+border-radius: 10px;
+margin-left: 4px;
+}
+.navbar .user-status.active {
+background: #00cc8833;
+color: #00ff88;
+}
+.navbar .nav-right {
+display: flex;
+align-items: center;
+gap: 6px;
+flex-wrap: wrap;
+}
+.navbar .credits-display {
+background: linear-gradient(135deg, #00aaff, #0066cc);
+padding: 3px 12px;
+border-radius: 20px;
+font-weight: bold;
+color: white;
+font-size: 0.7rem;
+box-shadow: 0 0 15px rgba(0, 150, 255, 0.1);
+white-space: nowrap;
+}
+.navbar .days-display {
+background: linear-gradient(135deg, #ff8800, #cc5500);
+padding: 3px 12px;
+border-radius: 20px;
+font-weight: bold;
+color: white;
+font-size: 0.7rem;
+box-shadow: 0 0 15px rgba(255, 136, 0, 0.1);
+white-space: nowrap;
+}
+.btn-theme {
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid var(--borde-neon);
+color: var(--texto-principal);
+border-radius: 50%;
+width: 32px;
+height: 32px;
+cursor: pointer;
+font-size: 1rem;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: 0.2s;
+}
+.btn-theme:hover {
+background: rgba(255, 255, 255, 0.2);
+transform: scale(1.1);
+}
+body.theme-day .btn-theme {
+background: rgba(0, 0, 0, 0.05);
+border-color: #0088cc;
+}
+body.theme-day .btn-theme:hover {
+background: rgba(0, 0, 0, 0.1);
+}
+
+/* ===== TABS ===== */
+.tabs-container {
+display: flex;
+background: rgba(10, 26, 58, 0.5);
+border-bottom: 2px solid var(--border-color);
+padding: 3px 10px;
+flex-shrink: 0;
+gap: 3px;
+overflow-x: auto;
+transition: background 0.3s, border-color 0.3s;
+}
+body.theme-day .tabs-container {
+background: rgba(200, 220, 245, 0.5);
+}
+.tabs-container::-webkit-scrollbar { height: 3px; }
+.tabs-container::-webkit-scrollbar-thumb { background: #00aaff; border-radius: 3px; }
+.tab-btn {
+padding: 6px 14px;
+background: transparent;
+border: none;
+color: var(--texto-secundario);
+font-weight: 600;
+font-size: 0.75rem;
+cursor: pointer;
+border-bottom: 3px solid transparent;
+transition: 0.2s;
+white-space: nowrap;
+}
+.tab-btn:hover { color: #66ddff; background: rgba(0, 100, 200, 0.05); }
+.tab-btn.active { color: #66ddff; border-bottom-color: var(--borde-neon); background: rgba(0, 100, 200, 0.08); }
+.tab-btn.massive-tab { color: #ff8800; font-weight: 700; }
+.tab-btn.massive-tab.active { color: #ff8800; border-bottom-color: #ff8800; background: rgba(255, 136, 0, 0.08); }
+.tab-btn.admin-tab { color: #ff44aa; font-weight: 700; }
+.tab-btn.admin-tab.active { color: #ff44aa; border-bottom-color: #ff44aa; background: rgba(255, 68, 170, 0.08); }
+.tab-btn.pasarela-tab { color: #6772e5; font-weight: 700; }
+.tab-btn.pasarela-tab.active { color: #6772e5; border-bottom-color: #6772e5; background: rgba(103, 114, 229, 0.08); }
+.tab-btn.direcciones-tab { color: #ffaa44; font-weight: 700; }
+.tab-btn.direcciones-tab.active { color: #ffaa44; border-bottom-color: #ffaa44; background: rgba(255, 170, 68, 0.08); }
+.tab-btn.juego-tab { color: #ff6b35; font-weight: 700; }
+.tab-btn.juego-tab.active { color: #ff6b35; border-bottom-color: #ff6b35; background: rgba(255, 107, 53, 0.08); }
+.tab-btn.registros-tab { color: #00ccff; font-weight: 700; }
+.tab-btn.registros-tab.active { color: #00ccff; border-bottom-color: #00ccff; background: rgba(0, 204, 255, 0.08); }
+.tab-btn.solicitudes-tab { color: #ffaa44; font-weight: 700; }
+.tab-btn.solicitudes-tab.active { color: #ffaa44; border-bottom-color: #ffaa44; background: rgba(255, 170, 68, 0.08); }
+
+/* ===== PANELES ===== */
+.panels-container {
+flex: 1;
+overflow-y: auto;
+padding: 12px 16px 16px 16px;
+background: rgba(10, 26, 58, 0.15);
+transition: background 0.3s;
+}
+body.theme-day .panels-container {
+background: rgba(200, 220, 245, 0.15);
+}
+.panels-container::-webkit-scrollbar { width: 4px; }
+.panels-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+.panel { display: none; animation: fadeIn 0.2s ease; }
+.panel.active { display: block; }
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(5px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.panel h3 {
+color: #66ddff;
+font-size: 1rem;
+margin-bottom: 10px;
+font-weight: 600;
+transition: color 0.3s;
+}
+/* ===== TARJETAS ===== */
+.item-card {
+background: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 12px;
+padding: 12px 14px;
+margin-bottom: 10px;
+transition: background 0.3s, border-color 0.3s;
+}
+.item-card .info-box {
+background: rgba(0, 68, 170, 0.08);
+padding: 6px 10px;
+border-radius: 8px;
+border: 1px solid var(--border-color);
+margin-bottom: 10px;
+font-size: 0.75rem;
+color: var(--texto-secundario);
+line-height: 1.5;
+transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+.item-card .info-box.free { border-color: #00ff88; background: #00ff8806; }
+.item-card .info-box.live { border-color: #ff44aa; background: #ff44aa06; }
+.item-card .info-box.massive { border-color: #ff8800; background: #ff880006; }
+.item-card .info-box.admin { border-color: #ff44aa; background: #ff44aa06; }
+.item-card .info-box.promo { border-color: #ffaa44; background: #ffaa4406; }
+.item-card .info-box.pasarela { border-color: #6772e5; background: #6772e506; }
+.item-card .info-box.direcciones { border-color: #ffaa44; background: #ffaa4406; }
+
+/* ===== FORMULARIOS ===== */
+.form-group { margin-bottom: 8px; }
+.form-group label {
+display: block;
+margin-bottom: 2px;
+color: var(--texto-secundario);
+font-weight: 600;
+font-size: 0.7rem;
+letter-spacing: 0.3px;
+}
+.form-group input, .form-group select, .form-group textarea {
+width: 100%;
+padding: 7px 10px;
+background: var(--input-bg);
+border: 2px solid var(--border-color);
+border-radius: var(--border-radius);
+color: var(--texto-principal);
+font-size: 0.85rem;
+transition: 0.2s;
+font-family: inherit;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+border-color: var(--borde-neon);
+box-shadow: 0 0 15px rgba(0, 200, 255, 0.08);
+outline: none;
+}
+
+/* ===== BOTONES ===== */
+.flex-row {
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+margin-bottom: 10px;
+}
+.flex-row .form-group { flex: 1; min-width: 70px; }
+.btn-block {
+padding: 10px 22px;
+font-size: 0.8rem;
+font-weight: 600;
+border: none;
+border-radius: 25px;
+cursor: pointer;
+color: white;
+transition: 0.15s;
+min-width: 130px;
+text-align: center;
+flex: 1;
+}
+.btn-block:hover { transform: scale(1.02); }
+.btn-block:active { transform: scale(0.97); }
+.btn-block.btn-start { background: linear-gradient(135deg, #00ccff, #0088cc); box-shadow: 0 0 15px rgba(0, 200, 255, 0.1); }
+.btn-block.btn-save { background: linear-gradient(135deg, #ff8800, #cc6600); box-shadow: 0 0 15px rgba(255, 136, 0, 0.1); }
+.btn-block.btn-live { background: linear-gradient(135deg, #ff44aa, #cc0088); box-shadow: 0 0 20px rgba(255, 68, 170, 0.12); }
+.btn-block.btn-massive { background: linear-gradient(135deg, #ff8800, #cc5500); box-shadow: 0 0 20px rgba(255, 136, 0, 0.12); }
+.btn-block.btn-direcciones { background: linear-gradient(135deg, #ffaa44, #cc8800); box-shadow: 0 0 20px rgba(255, 170, 68, 0.15); }
+
+/* ===== PASARELA CARDS ===== */
+.pasarela-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+gap: 10px;
+margin-top: 6px;
+}
+.pasarela-card {
+background: rgba(0, 0, 0, 0.15);
+border-radius: 10px;
+padding: 10px 12px;
+text-align: center;
+border: 2px solid var(--border-color);
+transition: 0.2s;
+cursor: pointer;
+}
+.pasarela-card:hover { border-color: var(--borde-neon); background: rgba(0, 0, 0, 0.25); }
+.pasarela-card.active { border-color: #00ff88; background: rgba(0, 255, 136, 0.08); box-shadow: 0 0 20px rgba(0, 255, 136, 0.1); }
+.pasarela-card .icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+.pasarela-card .name { font-weight: 600; font-size: 0.75rem; color: var(--texto-principal); }
+.pasarela-card .status { font-size: 0.6rem; color: var(--text-muted); margin-top: 2px; }
+.pasarela-card .status.active { color: #00ff88; }
+
+/* ===== DIRECCIONES RESULT ===== */
+.direccion-result {
+background: var(--bg-result);
+border: 2px solid #ffaa44;
+border-radius: 12px;
+padding: 12px 15px;
+margin-top: 8px;
+font-size: 0.9rem;
+line-height: 1.8;
+}
+
+/* ===== RESULTADOS ===== */
+.result-box {
+background: var(--bg-result);
+border: 2px solid var(--borde-neon);
+border-radius: 12px;
+padding: 10px 12px;
+margin-top: 8px;
+max-height: 320px;
+overflow-y: auto;
+font-size: 0.82rem;
+}
+
+/* ===== TARJETAS GENERADAS ===== */
+.generated-cards {
+background: rgba(0, 20, 50, 0.3);
+border: 2px solid #00aaff;
+border-radius: 12px;
+padding: 8px 10px;
+max-height: 250px;
+overflow-y: auto;
+}
+.info-badge {
+background: var(--border-color);
+padding: 1px 6px;
+border-radius: 4px;
+font-size: 0.5rem;
+color: var(--texto-principal);
+white-space: nowrap;
+}
+.info-badge.free-tag { background: #00cc88; color: #000; font-weight: bold; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+body { padding: 8px; }
+.app-container { max-height: 100vh; min-height: 95vh; border-radius: 14px; }
+.panels-container { padding: 8px 10px 12px 10px; }
+.navbar { padding: 6px 12px; min-height: 44px; }
+.tabs-container { padding: 2px 6px; }
+.tab-btn { padding: 5px 10px; font-size: 0.65rem; }
+.pasarela-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================== -->
+<!-- CONTENEDOR PRINCIPAL -->
+<!-- ============================================================== -->
+<div class="app-container">
+
+<!-- ============================================================== -->
+<!-- APLICACIÓN PRINCIPAL -->
+<!-- ============================================================== -->
+<div id="main-app">
+<!-- NAVBAR -->
+<div class="navbar">
+<div class="logo-area">
+<div class="logo-title">CHECK-PRO</div>
+<div class="user-info" id="userDisplay">
+👤 Admin
+<span class="user-status active" id="userStatusBadge">✅ Activo</span>
+</div>
+</div>
+<div class="nav-right">
+<button class="btn-theme" onclick="toggleTheme()" title="Cambiar tema">🌓</button>
+<span class="days-display" id="daysDisplay">📅 ∞ días</span>
+<span class="credits-display" id="creditsDisplay">💎 ∞ créditos</span>
+</div>
+</div>
+<!-- TABS -->
+<div class="tabs-container">
+<button class="tab-btn active" onclick="switchTab('generator')">🎲 GENERADOR</button>
+<button class="tab-btn" onclick="switchTab('live')">🔴 LIVE</button>
+<button class="tab-btn massive-tab" onclick="switchTab('massive')">📊 MASIVO</button>
+<button class="tab-btn pasarela-tab" onclick="switchTab('pasarela')">💳 PASARELA</button>
+<button class="tab-btn direcciones-tab" onclick="switchTab('direcciones')">📍 DIRECCIONES</button>
+</div>
+<!-- PANELS -->
+<div class="panels-container">
+<!-- ===== GENERADOR ===== -->
+<div id="panel-generator" class="panel active">
+<h3>🎲 GENERADOR DE TARJETAS <span class="info-badge free-tag">GRATIS</span></h3>
+<div class="item-card">
+<div class="info-box free">
+💡 <strong>Generación GRATUITA</strong> - Sin gastar créditos.
+Ingresa los primeros dígitos (mínimo 6). Puedes usar <strong>X</strong> o <strong>x</strong> como comodín.
+<br>Ejemplo: <strong>41691614x2xxxxx1</strong>
+</div>
+<div class="form-group">
+<label>🔢 Ingresa los primeros dígitos (BIN)</label>
+<input type="text" id="binInput" placeholder="Ej: 414444XXXXXXXXXX" maxlength="19">
+</div>
+<div class="flex-row">
+<div class="form-group"><label>📅 Mes (MM)</label><input type="text" id="cardMonth" placeholder="12" maxlength="2"></div>
+<div class="form-group"><label>📅 Año (YY)</label><input type="text" id="cardYear" placeholder="26" maxlength="2"></div>
+<div class="form-group"><label>📊 Cantidad</label><input type="number" id="genCount" value="10" min="1" max="50"></div>
+</div>
+<div class="flex-row">
+<button class="btn-block btn-start" onclick="generarTarjetas()">🎲 GENERAR</button>
+</div>
+</div>
+<div id="generatedContainer">
+<div class="generated-cards" id="generatedCards">
+<p style="color:var(--text-muted);text-align:center;padding:10px;font-size:0.8rem;">Genera tus tarjetas aquí</p>
+</div>
+</div>
+</div>
+
+<!-- ===== LIVE ===== -->
+<div id="panel-live" class="panel">
+<h3>🔴 LIVE INDIVIDUAL</h3>
+<div class="item-card">
+<div class="form-group"><label>🔢 Número de tarjeta</label><input type="text" id="liveCardNumber" placeholder="4111111111111111" maxlength="19"></div>
+<div class="flex-row">
+<div class="form-group"><label>📅 Mes</label><input type="text" id="liveCardMonth" placeholder="12" maxlength="2"></div>
+<div class="form-group"><label>📅 Año</label><input type="text" id="liveCardYear" placeholder="26" maxlength="2"></div>
+<div class="form-group"><label>🔐 CVV</label><input type="text" id="liveCardCVV" placeholder="123" maxlength="4"></div>
+</div>
+<button class="btn-block btn-live" onclick="mostrarNotificacion('Procesando verificación...')">🔴 VERIFICAR</button>
+</div>
+<div id="liveResultContainer">
+<div class="result-box" id="liveResultBox"><span style="color:var(--text-muted);">Esperando verificación...</span></div>
+</div>
+</div>
+
+<!-- ===== MASIVO ===== -->
+<div id="panel-massive" class="panel">
+<h3>📊 LIVE MASIVO</h3>
+<div class="item-card">
+<button class="btn-block btn-massive" onclick="mostrarNotificacion('Iniciando proceso masivo...')">📊 LIVE MASIVO</button>
+</div>
+<div id="massiveResultContainer">
+<div class="result-box" id="massiveResultBox"><span style="color:var(--text-muted);">Esperando verificación masiva...</span></div>
+</div>
+</div>
+
+<!-- ===== PASARELA ===== -->
+<div id="panel-pasarela" class="panel">
+<h3>💳 PASARELA DE PAGO</h3>
+<div class="item-card">
+<div class="pasarela-grid">
+<div class="pasarela-card active"><span class="icon">💳</span><div class="name">Stripe</div></div>
+<div class="pasarela-card"><span class="icon">📊</span><div class="name">Zuora</div></div>
+<div class="pasarela-card"><span class="icon">🔐</span><div class="name">Auth</div></div>
+<div class="pasarela-card"><span class="icon">🌐</span><div class="name">Braintree</div></div>
+</div>
+</div>
+</div>
+
+<!-- ===== DIRECCIONES ===== -->
+<div id="panel-direcciones" class="panel">
+<h3>📍 GENERADOR DE DIRECCIONES</h3>
+<div class="item-card">
+<div class="form-group">
+<label>🌎 Selecciona el país</label>
+<select id="paisDireccion">
+<option value="usa">🇺🇸 Estados Unidos</option>
+<option value="espana">🇪🇸 España</option>
+<option value="mexico">🇲🇽 México</option>
+</select>
+</div>
+<button class="btn-block btn-direcciones" onclick="mostrarNotificacion('Dirección generada')">🎲 GENERAR DIRECCIÓN</button>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    
+    const selectedPanel = document.getElementById('panel-' + tabId);
+    if(selectedPanel) selectedPanel.classList.add('active');
+    
+    event.target.classList.add('active');
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('theme-day');
+}
+
+function mostrarNotificacion(msg) {
+    alert(msg);
+}
+
+function generarTarjetas() {
+    const bin = document.getElementById('binInput').value;
+    const count = document.getElementById('genCount').value;
+    const container = document.getElementById('generatedCards');
+    
+    if(!bin) {
+        alert('Ingresa un BIN primero');
+        return;
+    }
+    
+    let html = '';
+    for(let i=0; i<count; i++) {
+        let genNum = bin.replace(/[xX]/g, () => Math.floor(Math.random() * 10));
+        while(genNum.length < 16) genNum += Math.floor(Math.random() * 10);
+        html += `<div style="padding: 4px; border-bottom: 1px solid var(--border-color);">${genNum}|12|28|${Math.floor(100 + Math.random() * 900)}</div>`;
+    }
+    container.innerHTML = html;
+}
+</script>
+
+
+</body></html>
+
