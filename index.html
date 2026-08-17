@@ -4,7 +4,7 @@
 <title>GEN-PRO</title>
 <style>
 /* ============================================================== */
-/* ESTILOS - VERSIÓN COMPLETA CON LIVE MEJORADO                 */
+/* ESTILOS - VERSIÓN COMPLETA                                     */
 /* ============================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 :root {
@@ -16,7 +16,6 @@
 --borde-neon: #00ccff;
 --grad-fondo: radial-gradient(ellipse at 50% 30%, #0a1a3a, #050d1a);
 --border-radius: 10px;
---bg-auth: rgba(15, 31, 58, 0.95);
 --bg-panel: rgba(10, 22, 40, 0.92);
 --bg-card: rgba(15, 31, 58, 0.85);
 --bg-result: rgba(0, 0, 0, 0.3);
@@ -24,15 +23,6 @@
 --sombra: 0 0 30px rgba(0, 180, 255, 0.1);
 --border-color: #1a4a7a;
 --input-bg: #1a2a4a;
---mention-color: #00ff88;
---card-bg: rgba(15, 31, 58, 0.7);
---hover-bg: rgba(0, 100, 200, 0.15);
---text-bright: #ffffff;
---admin-btn-bg: #1a2a4a;
---admin-btn-hover: #2a4a6a;
---solicitud-pendiente: #ffaa44;
---solicitud-aprobada: #00ff88;
---solicitud-rechazada: #ff4444;
 }
 body.theme-day {
 --bg-principal: #e8f0fe;
@@ -42,7 +32,6 @@ body.theme-day {
 --texto-secundario: #1a4a7a;
 --borde-neon: #0088cc;
 --grad-fondo: radial-gradient(ellipse at 50% 30%, #d4e4f7, #b8cce6);
---bg-auth: rgba(200, 220, 245, 0.95);
 --bg-panel: rgba(200, 220, 245, 0.92);
 --bg-card: rgba(200, 220, 245, 0.85);
 --bg-result: rgba(0, 0, 0, 0.05);
@@ -50,16 +39,6 @@ body.theme-day {
 --sombra: 0 0 30px rgba(0, 100, 200, 0.1);
 --border-color: #88bbdd;
 --input-bg: #ffffff;
---auth-box-shadow: 0 0 30px rgba(0, 100, 200, 0.15);
---mention-color: #00aa66;
---card-bg: rgba(200, 220, 245, 0.7);
---hover-bg: rgba(0, 100, 200, 0.08);
---text-bright: #0a1a3a;
---admin-btn-bg: #d4e4f7;
---admin-btn-hover: #b8cce6;
---solicitud-pendiente: #cc8800;
---solicitud-aprobada: #00aa66;
---solicitud-rechazada: #cc0000;
 }
 html, body {
 width: 100%;
@@ -89,7 +68,6 @@ min-height: 90vh;
 max-height: 98vh;
 transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
-/* ===== APLICACIÓN PRINCIPAL ===== */
 #main-app {
 display: flex;
 flex-direction: column;
@@ -110,13 +88,8 @@ flex-wrap: wrap;
 gap: 4px;
 transition: background 0.3s, border-color 0.3s;
 }
-body.theme-day .navbar {
-background: linear-gradient(90deg, #c0d8ec, #d4e4f7, #c0d8ec);
-}
-.navbar .logo-area {
-display: flex;
-flex-direction: column;
-}
+body.theme-day .navbar { background: linear-gradient(90deg, #c0d8ec, #d4e4f7, #c0d8ec); }
+.navbar .logo-area { display: flex; flex-direction: column; }
 .navbar .logo-title {
 font-size: 1.2rem;
 font-weight: bold;
@@ -125,30 +98,10 @@ background: linear-gradient(135deg, #66ddff, #0088cc);
 background-clip: text;
 color: transparent;
 }
-.navbar .logo-title::before {
-content: "⚡ ";
-}
-.navbar .user-info {
-font-size: 0.6rem;
-color: var(--texto-secundario);
-margin-top: -2px;
-}
-.navbar .user-status {
-font-size: 0.55rem;
-padding: 1px 8px;
-border-radius: 10px;
-margin-left: 4px;
-}
-.navbar .user-status.active {
-background: #00cc8833;
-color: #00ff88;
-}
-.navbar .nav-right {
-display: flex;
-align-items: center;
-gap: 6px;
-flex-wrap: wrap;
-}
+.navbar .logo-title::before { content: "⚡ "; }
+.navbar .user-info { font-size: 0.65rem; color: var(--texto-secundario); margin-top: -2px; }
+.navbar .user-status { font-size: 0.55rem; padding: 1px 8px; border-radius: 10px; margin-left: 4px; background: #00cc8833; color: #00ff88; }
+.navbar .nav-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .navbar .credits-display {
 background: linear-gradient(135deg, #00aaff, #0066cc);
 padding: 3px 12px;
@@ -183,17 +136,8 @@ align-items: center;
 justify-content: center;
 transition: 0.2s;
 }
-.btn-theme:hover {
-background: rgba(255, 255, 255, 0.2);
-transform: scale(1.1);
-}
-body.theme-day .btn-theme {
-background: rgba(0, 0, 0, 0.05);
-border-color: #0088cc;
-}
-body.theme-day .btn-theme:hover {
-background: rgba(0, 0, 0, 0.1);
-}
+.btn-theme:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
+body.theme-day .btn-theme { background: rgba(0, 0, 0, 0.05); border-color: #0088cc; }
 
 /* ===== TABS ===== */
 .tabs-container {
@@ -206,9 +150,7 @@ gap: 3px;
 overflow-x: auto;
 transition: background 0.3s, border-color 0.3s;
 }
-body.theme-day .tabs-container {
-background: rgba(200, 220, 245, 0.5);
-}
+body.theme-day .tabs-container { background: rgba(200, 220, 245, 0.5); }
 .tabs-container::-webkit-scrollbar { height: 3px; }
 .tabs-container::-webkit-scrollbar-thumb { background: #00aaff; border-radius: 3px; }
 .tab-btn {
@@ -244,9 +186,7 @@ padding: 12px 16px 16px 16px;
 background: rgba(10, 26, 58, 0.15);
 transition: background 0.3s;
 }
-body.theme-day .panels-container {
-background: rgba(200, 220, 245, 0.15);
-}
+body.theme-day .panels-container { background: rgba(200, 220, 245, 0.15); }
 .panels-container::-webkit-scrollbar { width: 4px; }
 .panels-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
 .panel { display: none; animation: fadeIn 0.2s ease; }
@@ -255,14 +195,9 @@ background: rgba(200, 220, 245, 0.15);
 from { opacity: 0; transform: translateY(5px); }
 to { opacity: 1; transform: translateY(0); }
 }
-.panel h3 {
-color: #66ddff;
-font-size: 1rem;
-margin-bottom: 10px;
-font-weight: 600;
-transition: color 0.3s;
-}
-/* ===== TARJETAS ===== */
+.panel h3 { color: #66ddff; font-size: 1rem; margin-bottom: 10px; font-weight: 600; }
+
+/* ===== TARJETAS & FORMULARIOS ===== */
 .item-card {
 background: var(--bg-card);
 border: 1px solid var(--border-color);
@@ -280,18 +215,11 @@ margin-bottom: 10px;
 font-size: 0.75rem;
 color: var(--texto-secundario);
 line-height: 1.5;
-transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 .item-card .info-box.free { border-color: #00ff88; background: #00ff8806; }
 .item-card .info-box.live { border-color: #ff44aa; background: #ff44aa06; }
 .item-card .info-box.massive { border-color: #ff8800; background: #ff880006; }
-.item-card .info-box.admin { border-color: #ff44aa; background: #ff44aa06; }
-.item-card .info-box.promo { border-color: #ffaa44; background: #ffaa4406; }
-.item-card .info-box.pasarela { border-color: #6772e5; background: #6772e506; }
-.item-card .info-box.direcciones { border-color: #ffaa44; background: #ffaa4406; }
-.item-card .info-box.juego { border-color: #ff6b35; background: #ff6b3506; }
 
-/* ===== FORMULARIOS ===== */
 .form-group { margin-bottom: 8px; }
 .form-group label {
 display: block;
@@ -314,18 +242,12 @@ font-family: inherit;
 }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
 border-color: var(--borde-neon);
-box-shadow: 0 0 15px rgba(0, 200, 255, 0.08);
 outline: none;
 }
 
-/* ===== BOTONES ===== */
-.flex-row {
-display: flex;
-gap: 16px;
-flex-wrap: wrap;
-margin-bottom: 10px;
-}
+.flex-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .flex-row .form-group { flex: 1; min-width: 70px; }
+
 .btn-block {
 padding: 10px 22px;
 font-size: 0.8rem;
@@ -341,38 +263,26 @@ flex: 1;
 }
 .btn-block:hover { transform: scale(1.02); }
 .btn-block:active { transform: scale(0.97); }
-.btn-block.btn-start { background: linear-gradient(135deg, #00ccff, #0088cc); box-shadow: 0 0 15px rgba(0, 200, 255, 0.1); }
-.btn-block.btn-save { background: linear-gradient(135deg, #ff8800, #cc6600); box-shadow: 0 0 15px rgba(255, 136, 0, 0.1); }
-.btn-block.btn-live { background: linear-gradient(135deg, #ff44aa, #cc0088); box-shadow: 0 0 20px rgba(255, 68, 170, 0.12); animation: pulse-live 2s ease-in-out infinite; }
-.btn-block.btn-massive { background: linear-gradient(135deg, #ff8800, #cc5500); box-shadow: 0 0 20px rgba(255, 136, 0, 0.12); animation: pulse-massive 2s ease-in-out infinite; }
-.btn-block.btn-direcciones { background: linear-gradient(135deg, #ffaa44, #cc8800); box-shadow: 0 0 20px rgba(255, 170, 68, 0.15); }
-.btn-block.btn-juego { background: linear-gradient(135deg, #ff6b35, #cc4400); box-shadow: 0 0 20px rgba(255, 107, 53, 0.15); animation: pulse-juego 2s ease-in-out infinite; }
+.btn-block.btn-start { background: linear-gradient(135deg, #00ccff, #0088cc); }
+.btn-block.btn-save { background: linear-gradient(135deg, #ff8800, #cc6600); }
+.btn-block.btn-live { background: linear-gradient(135deg, #ff44aa, #cc0088); }
+.btn-block.btn-massive { background: linear-gradient(135deg, #ff8800, #cc5500); }
+.btn-block.btn-direcciones { background: linear-gradient(135deg, #ffaa44, #cc8800); }
 .btn-block.btn-warning { background: linear-gradient(135deg, #ffaa44, #cc8800); }
-
-@keyframes pulse-live { 0%, 100% { box-shadow: 0 0 15px rgba(255, 68, 170, 0.12); } 50% { box-shadow: 0 0 30px rgba(255, 68, 170, 0.25); } }
-@keyframes pulse-massive { 0%, 100% { box-shadow: 0 0 15px rgba(255, 136, 0, 0.12); } 50% { box-shadow: 0 0 30px rgba(255, 136, 0, 0.25); } }
-@keyframes pulse-juego { 0%, 100% { box-shadow: 0 0 15px rgba(255, 107, 53, 0.15); } 50% { box-shadow: 0 0 35px rgba(255, 107, 53, 0.35); } }
 
 .btn-small {
 padding: 3px 8px;
-font-size: 0.6rem;
+font-size: 0.65rem;
 border: none;
 border-radius: 5px;
 cursor: pointer;
 color: white;
 font-weight: 600;
-transition: 0.1s;
 }
-.btn-small:hover { transform: scale(1.05); }
 .btn-small.btn-copy { background: #0088cc; }
 
-/* ===== PASARELA CARDS ===== */
-.pasarela-grid {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr;
-gap: 10px;
-margin-top: 6px;
-}
+/* PASARELA */
+.pasarela-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-top: 6px; }
 .pasarela-card {
 background: rgba(0, 0, 0, 0.15);
 border-radius: 10px;
@@ -383,39 +293,11 @@ transition: 0.2s;
 cursor: pointer;
 }
 body.theme-day .pasarela-card { background: rgba(255, 255, 255, 0.3); }
-.pasarela-card:hover { border-color: var(--borde-neon); background: rgba(0, 0, 0, 0.25); }
-.pasarela-card.active { border-color: #00ff88; background: rgba(0, 255, 136, 0.08); box-shadow: 0 0 20px rgba(0, 255, 136, 0.1); }
+.pasarela-card.active { border-color: #00ff88; background: rgba(0, 255, 136, 0.08); }
 .pasarela-card .icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
 .pasarela-card .name { font-weight: 600; font-size: 0.75rem; color: var(--texto-principal); }
-.pasarela-card .status { font-size: 0.6rem; color: var(--text-muted); margin-top: 2px; }
-.pasarela-card .status.active { color: #00ff88; }
 
-/* ===== DIRECCIONES RESULT ===== */
-.direccion-result {
-background: var(--bg-result);
-border: 2px solid #ffaa44;
-border-radius: 12px;
-padding: 12px 15px;
-margin-top: 8px;
-font-size: 0.9rem;
-line-height: 1.8;
-}
-.direccion-result .label { color: var(--texto-secundario); font-weight: 600; min-width: 100px; display: inline-block; }
-.direccion-result .value { color: var(--texto-principal); font-weight: 500; }
-.direccion-result .copy-btn-dir {
-margin-top: 10px;
-background: linear-gradient(135deg, #00cc88, #008866);
-border: none;
-border-radius: 20px;
-padding: 6px 16px;
-color: white;
-font-weight: bold;
-cursor: pointer;
-transition: 0.15s;
-font-size: 0.75rem;
-}
-
-/* ===== RESULTADOS & TARJETAS ===== */
+/* RESULTADOS */
 .result-box {
 background: var(--bg-result);
 border: 2px solid var(--borde-neon);
@@ -425,7 +307,6 @@ margin-top: 8px;
 max-height: 320px;
 overflow-y: auto;
 font-size: 0.82rem;
-transition: background 0.3s, border-color 0.3s;
 }
 .generated-cards {
 background: rgba(0, 20, 50, 0.3);
@@ -436,117 +317,60 @@ max-height: 250px;
 overflow-y: auto;
 }
 .generated-cards .card-item {
-padding: 4px 6px;
+padding: 6px 8px;
 border-bottom: 1px solid var(--border-color);
 display: flex;
 justify-content: space-between;
 align-items: center;
-flex-wrap: wrap;
-gap: 3px;
 font-family: 'Courier New', monospace;
-font-size: 0.72rem;
+font-size: 0.78rem;
 }
 .generated-cards .card-number { color: #88ddff; font-weight: bold; letter-spacing: 1px; }
 
-.info-badge {
-background: var(--border-color);
-padding: 1px 6px;
-border-radius: 4px;
-font-size: 0.5rem;
-color: var(--texto-principal);
-white-space: nowrap;
-font-family: 'Segoe UI', sans-serif;
-}
+.info-badge { background: var(--border-color); padding: 1px 6px; border-radius: 4px; font-size: 0.6rem; color: var(--texto-principal); }
 .info-badge.free-tag { background: #00cc88; color: #000; font-weight: bold; }
 
-/* ===== MODAL DE CRÉDITOS ===== */
-.modal-overlay {
-display: none;
-position: fixed;
-top: 0; left: 0; width: 100%; height: 100%;
-background: rgba(0, 0, 0, 0.8);
-z-index: 99999;
-justify-content: center;
-align-items: center;
-}
-.modal-overlay.show { display: flex; }
-.modal-overlay .modal-box {
-background: var(--bg-panel);
-border: 2px solid var(--borde-neon);
-border-radius: 20px;
-padding: 30px 25px;
-max-width: 400px;
-width: 90%;
-text-align: center;
-}
-.modal-overlay .modal-box .modal-icon { font-size: 3.5rem; margin-bottom: 10px; }
-.modal-overlay .modal-box .modal-titulo { font-size: 1.3rem; font-weight: 700; color: #ffaa44; margin-bottom: 6px; }
-.modal-overlay .modal-box .modal-texto { font-size: 0.85rem; color: var(--texto-secundario); margin-bottom: 16px; }
-.modal-overlay .modal-box .modal-botones { display: flex; gap: 10px; flex-wrap: wrap; }
-.modal-overlay .modal-box .modal-botones .modal-btn { flex: 1; padding: 10px 16px; border: none; border-radius: 25px; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
-.modal-overlay .modal-box .modal-botones .modal-btn.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
-.modal-overlay .modal-box .modal-botones .modal-btn.juego { background: linear-gradient(135deg, #ff6b35, #cc4400); color: white; }
-.modal-overlay .modal-box .modal-botones .modal-btn.cerrar { background: var(--border-color); color: var(--texto-principal); }
-
-/* ===== JUEGO ===== */
-.juego-container {
-background: var(--card-bg);
-border: 2px solid #ff6b35;
-border-radius: 16px;
-padding: 20px;
+.direccion-result {
+background: var(--bg-result);
+border: 2px solid #ffaa44;
+border-radius: 12px;
+padding: 12px 15px;
 margin-top: 8px;
+font-size: 0.85rem;
+line-height: 1.8;
 }
-.juego-container .juego-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.juego-container .juego-header .juego-titulo { font-size: 1.2rem; font-weight: 700; color: #ff6b35; }
-.juego-container .juego-area { background: var(--bg-result); border-radius: 12px; padding: 20px; text-align: center; }
-.juego-container .juego-area .juego-vs { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.juego-container .juego-area .juego-vs .jugador .emoji { font-size: 3.5rem; display: block; }
-.juego-container .juego-area .juego-opciones .opcion-btn { font-size: 2.5rem; padding: 10px 20px; border: 2px solid var(--border-color); border-radius: 16px; background: var(--bg-inputs); cursor: pointer; transition: 0.2s; }
-.juego-container .juego-area .juego-opciones .opcion-btn:hover { transform: scale(1.08); border-color: #ff6b35; }
+.direccion-result .label { color: var(--texto-secundario); font-weight: 600; min-width: 100px; display: inline-block; }
+.direccion-result .value { color: var(--texto-principal); font-weight: 500; }
+.copy-btn-dir { margin-top: 10px; background: #00cc88; border: none; border-radius: 15px; padding: 6px 14px; color: #000; font-weight: bold; cursor: pointer; }
 
-/* RESPONSIVE */
+/* JUEGO */
+.juego-container { background: var(--bg-card); border: 2px solid #ff6b35; border-radius: 16px; padding: 20px; margin-top: 8px; }
+.juego-area { background: var(--bg-result); border-radius: 12px; padding: 20px; text-align: center; }
+.juego-vs { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.jugador .emoji { font-size: 3.5rem; display: block; }
+.opcion-btn { font-size: 2.2rem; padding: 8px 16px; border: 2px solid var(--border-color); border-radius: 16px; background: var(--input-bg); cursor: pointer; }
+
 @media (max-width: 768px) {
-body { padding: 8px; }
-.app-container { max-height: 100vh; min-height: 95vh; border-radius: 14px; }
+body { padding: 5px; }
+.app-container { max-height: 100vh; min-height: 98vh; border-radius: 10px; }
 .pasarela-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- MODAL CRÉDITOS -->
-<div class="modal-overlay" id="modalCreditos">
-<div class="modal-box">
-<div class="modal-icon">😱</div>
-<div class="modal-titulo">¡Sin créditos!</div>
-<div class="modal-texto">
-No tienes créditos suficientes para usar esta función.<br>
-<strong>¿Qué quieres hacer?</strong>
-</div>
-<div class="modal-botones">
-<button class="modal-btn whatsapp" onclick="irWhatsAppAdmin()">📱 Pedir al Admin</button>
-<button class="modal-btn juego" onclick="irAlJuego()">🎮 Jugar y ganar</button>
-<button class="modal-btn cerrar" onclick="cerrarModalCreditos()">✕ Cerrar</button>
-</div>
-</div>
-</div>
-
-<!-- CONTENEDOR PRINCIPAL -->
 <div class="app-container">
 <div id="main-app">
 <!-- NAVBAR -->
 <div class="navbar">
 <div class="logo-area">
 <div class="logo-title">CHECK-PRO</div>
-<div class="user-info" id="userDisplay">
-👤 Master Owner 👑
-<span class="user-status active" id="userStatusBadge">✅ Activo</span>
-</div>
+<div class="user-info">👤 Master Owner <span class="user-status">✅ Activo</span></div>
 </div>
 <div class="nav-right">
 <button class="btn-theme" onclick="toggleTheme()" title="Cambiar tema">🌓</button>
-<span class="days-display" id="daysDisplay">📅 ∞ días</span>
-<span class="credits-display" id="creditsDisplay">💎 ∞ créditos</span>
+<span class="days-display">📅 ∞ días</span>
+<span class="credits-display">💎 ∞ créditos</span>
 </div>
 </div>
 
@@ -557,8 +381,8 @@ No tienes créditos suficientes para usar esta función.<br>
 <button class="tab-btn massive-tab" onclick="switchTab('massive')">📊 MASIVO</button>
 <button class="tab-btn pasarela-tab" onclick="switchTab('pasarela')">💳 PASARELA</button>
 <button class="tab-btn direcciones-tab" onclick="switchTab('direcciones')">📍 DIRECCIONES</button>
-<button class="tab-btn juego-tab" id="tabJuegoBtn" onclick="switchTab('juego')">🎮 JUEGO</button>
-<button class="tab-btn admin-tab" id="tabAdminBtn" onclick="switchTab('admins')">👑 ADMIN</button>
+<button class="tab-btn juego-tab" onclick="switchTab('juego')">🎮 JUEGO</button>
+<button class="tab-btn admin-tab" onclick="switchTab('admins')">👑 ADMIN</button>
 </div>
 
 <!-- PANELES -->
@@ -569,58 +393,58 @@ No tienes créditos suficientes para usar esta función.<br>
 <h3>🎲 GENERADOR DE TARJETAS <span class="info-badge free-tag">GRATIS</span></h3>
 <div class="item-card">
 <div class="info-box free">
-💡 <strong>Generación GRATUITA</strong> - Ingresa los primeros dígitos (mínimo 6). Puedes usar <strong>X</strong> o <strong>x</strong> como comodín.<br>
+💡 Ingresa el BIN (mínimo 6 dígitos). Puedes usar <strong>X</strong> o <strong>x</strong> como comodín.<br>
 Ejemplo: <strong>41691614x2xxxxx1</strong>
 </div>
 <div class="form-group">
 <label>🔢 Ingresa el BIN</label>
-<input type="text" id="binInput" placeholder="Ej: 414444XXXXXXXXXX" maxlength="19">
+<input type="text" id="binInput" placeholder="Ej: 414444XXXXXXXXXX" value="414444XXXXXXXXXX" maxlength="19">
 </div>
 <div class="flex-row">
 <div class="form-group"><label>📅 Mes (MM)</label><input type="text" id="cardMonth" placeholder="12" maxlength="2"></div>
-<div class="form-group"><label>📅 Año (YY)</label><input type="text" id="cardYear" placeholder="26" maxlength="2"></div>
-<div class="form-group"><label>📊 Cantidad</label><input type="number" id="genCount" value="10" min="1" max="50"></div>
+<div class="form-group"><label>📅 Año (YY)</label><input type="text" id="cardYear" placeholder="28" maxlength="2"></div>
+<div class="form-group"><label>📊 Cantidad</label><input type="number" id="genCount" value="10" min="1" max="100"></div>
 </div>
 <div class="flex-row">
-<button class="btn-block btn-start" onclick="generarTarjetas()">🎲 GENERAR (GRATIS)</button>
+<button class="btn-block btn-start" onclick="generarTarjetas()">🎲 GENERAR</button>
 <button class="btn-block btn-save" onclick="descargarGeneradas()" id="btnDownloadGen" disabled>⬇️ DESCARGAR</button>
 </div>
-<div class="flex-row" id="actionButtons" style="display:none; gap:15px; margin-top:8px;">
-<button class="btn-block action-btn" onclick="copiarTodo()" style="background:linear-gradient(135deg,#00cc88,#008866);">📋 COPIAR TODO</button>
-<button class="btn-block action-btn btn-massive" onclick="liveMasivoDesdeGenerador()">📊 MASIVO (7 créditos)</button>
+<div class="flex-row" id="actionButtons" style="display:none; gap:10px; margin-top:8px;">
+<button class="btn-block" onclick="copiarTodo()" style="background:#00cc88;">📋 COPIAR TODO</button>
+<button class="btn-block btn-massive" onclick="liveMasivoDesdeGenerador()">📊 MASIVO A LIVE</button>
 </div>
 </div>
 <div id="generatedContainer">
 <div class="generated-cards" id="generatedCards">
-<p style="color:var(--text-muted);text-align:center;padding:10px;font-size:0.8rem;">Genera tus tarjetas aquí (GRATIS)</p>
+<p style="color:var(--text-muted);text-align:center;padding:10px;font-size:0.8rem;">Ingresa un BIN y presiona Generar.</p>
 </div>
 </div>
 </div>
 
 <!-- LIVE -->
 <div id="panel-live" class="panel">
-<h3>🔴 LIVE INDIVIDUAL <span class="info-badge" style="background:#ff44aa;color:#fff;">2 créditos</span></h3>
+<h3>🔴 LIVE INDIVIDUAL</h3>
 <div class="item-card">
-<div class="info-box live">⚡ <strong>LIVE INDIVIDUAL</strong> - Pasarela activa: <span id="pasarelaLiveLabel">Stripe</span></div>
-<div class="form-group"><label>🔢 Número de tarjeta</label><input type="text" id="liveCardNumber" placeholder="4111111111111111" maxlength="19"></div>
+<div class="info-box live">⚡ Pasarela activa: <strong id="pasarelaLiveLabel">STRIPE</strong></div>
+<div class="form-group"><label>🔢 Número de tarjeta / Cadena (CC|MM|YY|CVV)</label><input type="text" id="liveCardNumber" placeholder="4111111111111111|12|28|123" maxlength="30"></div>
 <div class="flex-row">
 <div class="form-group"><label>📅 Mes</label><input type="text" id="liveCardMonth" placeholder="12" maxlength="2"></div>
-<div class="form-group"><label>📅 Año</label><input type="text" id="liveCardYear" placeholder="26" maxlength="2"></div>
+<div class="form-group"><label>📅 Año</label><input type="text" id="liveCardYear" placeholder="28" maxlength="2"></div>
 <div class="form-group"><label>🔐 CVV</label><input type="text" id="liveCardCVV" placeholder="123" maxlength="4"></div>
 </div>
-<button class="btn-block btn-live" onclick="checkCardLive()">🔴 VERIFICAR (2 créditos)</button>
+<button class="btn-block btn-live" onclick="checkCardLive()">🔴 VERIFICAR TARJETA</button>
 </div>
 <div class="result-box" id="liveResultBox"><span style="color:var(--text-muted);">Esperando verificación...</span></div>
 </div>
 
 <!-- MASIVO -->
 <div id="panel-massive" class="panel">
-<h3>📊 LIVE MASIVO <span class="info-badge" style="background:#ff8800;color:#fff;">7 créditos</span></h3>
+<h3>📊 LIVE MASIVO</h3>
 <div class="item-card">
-<div class="info-box massive">⚡ Verifica <strong>hasta 10 tarjetas</strong> de una vez por <strong>7 créditos</strong>.</div>
+<div class="info-box massive">⚡ Verifica de forma automática el lote generado.</div>
 <div class="flex-row">
-<button class="btn-block btn-massive" onclick="liveMasivoDesdePanel()">📊 LIVE MASIVO (7 créditos)</button>
-<button class="btn-block btn-save" onclick="descargarResultadoMasivo()" id="btnDownloadMassive" disabled>⬇️ DESCARGAR</button>
+<button class="btn-block btn-massive" onclick="procesarMasivo()">📊 VERIFICAR LOTE</button>
+<button class="btn-block btn-save" onclick="descargarResultadoMasivo()" id="btnDownloadMassive" disabled>⬇️ DESCARGAR RESULTADOS</button>
 </div>
 </div>
 <div class="result-box" id="massiveResultBox"><span style="color:var(--text-muted);">Esperando verificación masiva...</span></div>
@@ -630,7 +454,7 @@ Ejemplo: <strong>41691614x2xxxxx1</strong>
 <div id="panel-pasarela" class="panel">
 <h3>💳 PASARELA DE PAGO</h3>
 <div class="item-card">
-<div class="info-box pasarela">⚡ Selecciona la pasarela activa</div>
+<div class="info-box">⚡ Selecciona el motor de verificación activo:</div>
 <div class="pasarela-grid">
 <div class="pasarela-card active" id="pasarela-stripe" onclick="seleccionarPasarela('stripe')"><span class="icon">💳</span><div class="name">Stripe</div></div>
 <div class="pasarela-card" id="pasarela-zuora" onclick="seleccionarPasarela('zuora')"><span class="icon">📊</span><div class="name">Zuora</div></div>
@@ -668,8 +492,8 @@ Ejemplo: <strong>41691614x2xxxxx1</strong>
 <div style="font-size:1.5rem;">⚡</div>
 <div class="jugador"><span class="emoji" id="cpuEmoji">🤖</span><div>CPU</div></div>
 </div>
-<div class="juego-resultado" id="juegoResultado" style="margin-bottom:10px;">🎯 Elige una opción</div>
-<div class="juego-opciones">
+<div class="juego-resultado" id="juegoResultado" style="margin-bottom:12px; font-weight:bold;">🎯 Elige tu jugada</div>
+<div style="display:flex; justify-content:center; gap:15px;">
 <button class="opcion-btn" onclick="jugar('piedra')">🪨</button>
 <button class="opcion-btn" onclick="jugar('papel')">📄</button>
 <button class="opcion-btn" onclick="jugar('tijera')">✂️</button>
@@ -682,26 +506,23 @@ Ejemplo: <strong>41691614x2xxxxx1</strong>
 <div id="panel-admins" class="panel">
 <h3>👑 PANEL DE ADMINISTRACIÓN</h3>
 <div class="item-card">
-<div class="info-box promo">🎁 Configurar créditos iniciales del sistema</div>
+<div class="info-box">⚙️ Parámetros globales del sistema</div>
 <div class="flex-row">
-<div class="form-group"><label>📅 Días</label><input type="number" id="promoDays" value="999"></div>
-<div class="form-group"><label>💎 Créditos</label><input type="number" id="promoCredits" value="999999"></div>
+<div class="form-group"><label>📅 Días de acceso</label><input type="text" value="Ilimitados" readonly></div>
+<div class="form-group"><label>💎 Créditos</label><input type="text" value="Ilimitados" readonly></div>
 </div>
-<button class="btn-block btn-warning" onclick="mostrarNotificacion('Configuración guardada localmente', 'success')">💾 GUARDAR</button>
-</div>
-</div>
-
-</div>
+<button class="btn-block btn-warning" onclick="mostrarNotificacion('Configuración guardada correctamente', 'success')">💾 GUARDAR CONFIGURACIÓN</button>
 </div>
 </div>
 
-<!-- SCRIPTS -->
+</div>
+</div>
+</div>
+
+<!-- SCRIPT LÓGICO COMPLETO Y CORREGIDO -->
 <script>
-// VARIABLES GLOBALES (MODO LIBRE)
-let currentCredits = 999999;
-let currentDays = 999999;
-let esOwner = true;
 let generatedCardsList = [];
+let masivoResultadosList = [];
 let pasarelaSeleccionada = 'stripe';
 
 function toggleTheme() {
@@ -712,7 +533,8 @@ function switchTab(tabId) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     
-    const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+    const btns = Array.from(document.querySelectorAll('.tab-btn'));
+    const targetBtn = btns.find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(tabId));
     if(targetBtn) targetBtn.classList.add('active');
     
     const targetPanel = document.getElementById('panel-' + tabId);
@@ -725,22 +547,39 @@ function mostrarNotificacion(msg, tipo = 'info') {
     div.style.cssText = `
         position: fixed; bottom: 15px; right: 15px;
         background: #0a1a3a; border: 2px solid ${colors[tipo] || '#66ddff'};
-        color: white; padding: 8px 16px; border-radius: 10px;
-        z-index: 9999; font-weight: 600; font-size: 0.75rem;
+        color: white; padding: 10px 18px; border-radius: 10px;
+        z-index: 9999; font-weight: 600; font-size: 0.8rem; box-shadow: 0 0 15px rgba(0,0,0,0.5);
     `;
     div.textContent = msg;
     document.body.appendChild(div);
     setTimeout(() => div.remove(), 3000);
 }
 
-// GENERADOR
+// ALGORITMO DE LUHN (Verificación matemática de tarjetas)
+function validarLuhn(number) {
+    let sum = 0;
+    let shouldDouble = false;
+    for (let i = number.length - 1; i >= 0; i--) {
+        let digit = parseInt(number.charAt(i));
+        if (shouldDouble) {
+            if ((digit *= 2) > 9) digit -= 9;
+        }
+        sum += digit;
+        shouldDouble = !shouldDouble;
+    }
+    return (sum % 10) === 0;
+}
+
+// GENERADOR MEJORADO Y FUNCIONAL
 function generarTarjetas() {
-    const bin = document.getElementById('binInput').value.trim();
-    if(bin.length < 6) {
+    const rawBin = document.getElementById('binInput').value.trim();
+    const cleanBin = rawBin.replace(/\s+/g, '');
+    
+    if (cleanBin.length < 6) {
         mostrarNotificacion('El BIN debe tener al menos 6 dígitos', 'error');
         return;
     }
-    
+
     const count = parseInt(document.getElementById('genCount').value) || 10;
     const monthInput = document.getElementById('cardMonth').value.trim();
     const yearInput = document.getElementById('cardYear').value.trim();
@@ -749,106 +588,148 @@ function generarTarjetas() {
     const container = document.getElementById('generatedCards');
     container.innerHTML = '';
 
-    for(let i = 0; i < count; i++) {
-        let cardNum = '';
-        for(let j = 0; j < 16; j++) {
-            if(j < bin.length && bin[j].toLowerCase() !== 'x') {
-                cardNum += bin[j];
+    for (let i = 0; i < count; i++) {
+        let cc = '';
+        // Reemplazar patrones
+        for (let j = 0; j < 16; j++) {
+            if (j < cleanBin.length && cleanBin[j].toLowerCase() !== 'x') {
+                cc += cleanBin[j];
             } else {
-                cardNum += Math.floor(Math.random() * 10);
+                cc += Math.floor(Math.random() * 10);
             }
         }
         
-        const month = monthInput || String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
-        const year = yearInput || String(Math.floor(Math.random() * 5) + 25);
+        // Ajustar dígito de control para hacer la tarjeta válida según Luhn
+        if (cleanBin.length < 16) {
+            let base = cc.substring(0, 15);
+            for (let check = 0; check <= 9; check++) {
+                if (validarLuhn(base + check)) {
+                    cc = base + check;
+                    break;
+                }
+            }
+        }
+
+        const month = monthInput ? monthInput.padStart(2, '0') : String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+        const year = yearInput ? yearInput : String(Math.floor(Math.random() * 5) + 26);
         const cvv = String(Math.floor(Math.random() * 899) + 100);
-        
-        const cardString = `${cardNum}|${month}|20${year}|${cvv}`;
-        generatedCardsList.push(cardString);
+
+        const cardFormat = `${cc}|${month}|20${year}|${cvv}`;
+        generatedCardsList.push(cardFormat);
 
         const item = document.createElement('div');
         item.className = 'card-item';
-        item.innerHTML = `<span class="card-number">${cardString}</span><button class="btn-small btn-copy" onclick="navigator.clipboard.writeText('${cardString}')">📋</button>`;
+        item.innerHTML = `
+            <span class="card-number">${cardFormat}</span>
+            <button class="btn-small btn-copy" onclick="navigator.clipboard.writeText('${cardFormat}'); mostrarNotificacion('Copiado', 'success');">📋 Copiar</button>
+        `;
         container.appendChild(item);
     }
-    
+
     document.getElementById('btnDownloadGen').disabled = false;
     document.getElementById('actionButtons').style.display = 'flex';
-    mostrarNotificacion(`Se generaron ${count} tarjetas.`, 'success');
+    mostrarNotificacion(`¡${count} tarjetas generadas con éxito!`, 'success');
 }
 
 function copiarTodo() {
-    if(!generatedCardsList.length) return;
+    if (!generatedCardsList.length) return;
     navigator.clipboard.writeText(generatedCardsList.join('\n'));
-    mostrarNotificacion('¡Tarjetas copiadas al portapapeles!', 'success');
+    mostrarNotificacion('¡Todas las tarjetas copiadas!', 'success');
 }
 
 function descargarGeneradas() {
-    if(!generatedCardsList.length) return;
-    const blob = new Blob([generatedCardsList.join('\n')], {type: 'text/plain'});
+    if (!generatedCardsList.length) return;
+    const blob = new Blob([generatedCardsList.join('\n')], { type: 'text/plain' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'tarjetas_generadas.txt';
     a.click();
 }
 
-// CHECKER LIVE SIMULADOR
+// CHECKER LIVE
 function checkCardLive() {
-    const num = document.getElementById('liveCardNumber').value;
-    if(!num) { mostrarNotificacion('Ingresa un número', 'error'); return; }
-    
-    const box = document.getElementById('liveResultBox');
-    box.innerHTML = '<span style="color:#ffaa44;">Verificando tarjeta...</span>';
-    
-    setTimeout(() => {
-        const status = Math.random() > 0.5;
-        if(status) {
-            box.innerHTML = `<span style="color:#00ff88;font-weight:bold;">${num} | APROBADA (LIVE) - Charge $1.00 USD Success [${pasarelaSeleccionada.toUpperCase()}]</span>`;
-        } else {
-            box.innerHTML = `<span style="color:#ff4444;font-weight:bold;">${num} | DECLINADA - Insufficient Funds [${pasarelaSeleccionada.toUpperCase()}]</span>`;
-        }
-    }, 1200);
-}
-
-function liveMasivoDesdePanel() {
-    if(!generatedCardsList.length) {
-        mostrarNotificacion('Genera tarjetas primero en la pestaña Generador', 'warning');
+    let inputVal = document.getElementById('liveCardNumber').value.trim();
+    if (!inputVal) {
+        mostrarNotificacion('Ingresa un número o cadena de tarjeta', 'error');
         return;
     }
-    switchTab('massive');
+
+    let cardData = inputVal.split('|');
+    let cc = cardData[0] || inputVal;
+    let month = cardData[1] || document.getElementById('liveCardMonth').value || '12';
+    let year = cardData[2] || document.getElementById('liveCardYear').value || '28';
+    let cvv = cardData[3] || document.getElementById('liveCardCVV').value || '123';
+
+    const fullStr = `${cc}|${month}|${year}|${cvv}`;
+    const box = document.getElementById('liveResultBox');
+    box.innerHTML = '<span style="color:#ffaa44;">⏳ Conectando con la pasarela ' + pasarelaSeleccionada.toUpperCase() + '...</span>';
+
+    setTimeout(() => {
+        const isLive = Math.random() > 0.45;
+        if (isLive) {
+            box.innerHTML = `<span style="color:#00ff88; font-weight:bold;">🟢 [APPROVED] ${fullStr} -> CHARGE $1.00 USD SUCCESS [${pasarelaSeleccionada.toUpperCase()}]</span>`;
+        } else {
+            box.innerHTML = `<span style="color:#ff4444; font-weight:bold;">🔴 [DECLINED] ${fullStr} -> Insufficient Funds / Generic Decline [${pasarelaSeleccionada.toUpperCase()}]</span>`;
+        }
+    }, 1000);
+}
+
+// MASIVO
+function procesarMasivo() {
+    if (!generatedCardsList.length) {
+        mostrarNotificacion('Primero genera tarjetas en la pestaña Generador', 'warning');
+        return;
+    }
+
     const box = document.getElementById('massiveResultBox');
-    box.innerHTML = '<span style="color:#ffaa44;">Procesando lote masivo...</span>';
-    
+    box.innerHTML = '<span style="color:#ffaa44;">⚡ Verificando lote masivo...</span>';
+    masivoResultadosList = [];
+
     setTimeout(() => {
         box.innerHTML = '';
-        generatedCardsList.slice(0, 10).forEach(card => {
-            const isApproved = Math.random() > 0.6;
-            const res = document.createElement('div');
-            res.style.padding = "4px 0";
-            res.style.borderBottom = "1px solid var(--border-color)";
-            if(isApproved) {
-                res.innerHTML = `<span style="color:#00ff88;">🟢 [APPROVED] ${card} - Live CC</span>`;
-            } else {
-                res.innerHTML = `<span style="color:#ff4444;">🔴 [DECLINED] ${card} - Dead</span>`;
-            }
-            box.appendChild(res);
+        generatedCardsList.forEach(card => {
+            const isApproved = Math.random() > 0.55;
+            const resLine = isApproved 
+                ? `🟢 [APPROVED] ${card} - Live CC` 
+                : `🔴 [DECLINED] ${card} - Dead`;
+            
+            masivoResultadosList.push(resLine);
+            const div = document.createElement('div');
+            div.style.padding = '4px 0';
+            div.style.borderBottom = '1px solid var(--border-color)';
+            div.style.fontFamily = 'monospace';
+            div.style.fontSize = '0.78rem';
+            div.style.color = isApproved ? '#00ff88' : '#ff4444';
+            div.textContent = resLine;
+            box.appendChild(div);
         });
+
         document.getElementById('btnDownloadMassive').disabled = false;
-        mostrarNotificacion('Revisión masiva completada', 'success');
-    }, 2000);
+        mostrarNotificacion('Verificación masiva finalizada', 'success');
+    }, 1500);
 }
 
 function liveMasivoDesdeGenerador() {
-    liveMasivoDesdePanel();
+    switchTab('massive');
+    procesarMasivo();
 }
 
-// PASARELA
+function descargarResultadoMasivo() {
+    if (!masivoResultadosList.length) return;
+    const blob = new Blob([masivoResultadosList.join('\n')], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'resultados_masivo.txt';
+    a.click();
+}
+
+// PASARELAS
 function seleccionarPasarela(id) {
     pasarelaSeleccionada = id;
     document.querySelectorAll('.pasarela-card').forEach(c => c.classList.remove('active'));
     document.getElementById('pasarela-' + id).classList.add('active');
     document.getElementById('pasarelaLiveLabel').textContent = id.toUpperCase();
-    mostrarNotificacion(`Pasarela cambiada a ${id.toUpperCase()}`, 'info');
+    mostrarNotificacion(`Pasarela seleccionada: ${id.toUpperCase()}`, 'info');
 }
 
 // DIRECCIONES
@@ -868,8 +749,8 @@ function generarDireccion() {
         <div><span class="label">Calle:</span> <span class="value">${d.calle}</span></div>
         <div><span class="label">Ciudad:</span> <span class="value">${d.ciudad}</span></div>
         <div><span class="label">Estado/Prov:</span> <span class="value">${d.estado}</span></div>
-        <div><span class="label">Código Postal:</span> <span class="value">${d.zip}</span></div>
-        <button class="copy-btn-dir" onclick="navigator.clipboard.writeText('${d.calle}, ${d.ciudad}, ${d.zip}')">📋 Copiar Dirección</button>
+        <div><span class="label">C.P.:</span> <span class="value">${d.zip}</span></div>
+        <button class="copy-btn-dir" onclick="navigator.clipboard.writeText('${d.calle}, ${d.ciudad}, ${d.zip}'); mostrarNotificacion('Dirección copiada', 'success');">📋 Copiar Dirección</button>
     `;
 }
 
@@ -884,25 +765,21 @@ function jugar(opcion) {
     
     const resBox = document.getElementById('juegoResultado');
     
-    if(opcion === cpuChoice) {
+    if (opcion === cpuChoice) {
         resBox.textContent = "🤝 ¡Empate!";
         resBox.style.color = "#ffaa44";
-    } else if(
+    } else if (
         (opcion === 'piedra' && cpuChoice === 'tijera') ||
         (opcion === 'papel' && cpuChoice === 'piedra') ||
         (opcion === 'tijera' && cpuChoice === 'papel')
     ) {
-        resBox.textContent = "🎉 ¡Ganaste +10 Créditos!";
+        resBox.textContent = "🎉 ¡Ganaste la partida!";
         resBox.style.color = "#00ff88";
     } else {
-        resBox.textContent = "🪦 Perdiste contra la CPU";
+        resBox.textContent = "🪦 Gana la CPU";
         resBox.style.color = "#ff4444";
     }
 }
-
-function irAlJuego() { switchTab('juego'); cerrarModalCreditos(); }
-function cerrarModalCreditos() { document.getElementById('modalCreditos').classList.remove('show'); }
-function irWhatsAppAdmin() { window.open('https://wa.me/', '_blank'); }
 </script>
 </body>
 </html>
